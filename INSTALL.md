@@ -193,6 +193,8 @@ git clone git://github.com/breezecloud/myPiLFS下载，也可以直接用浏览�
 邮箱：luping@shtel.com.cn或者luping@189.cn欢迎交流
 欢迎加入我的个人公众号，本人以后所有的原创文章均会发布在此公众号，公众号可以通过搜索electronic_computer加入，或者扫描二维码加入。
 
-[id]: https://mmbiz.qlogo.cn/mmbiz_jpg/HkMWDzhKWAhHfV6Jleicm9l8O8qTLrlG0ZT0pZkLkM8ZS72TxJAm4TN4ScbbSyQMTBI3IYicW9HicnBq2ACRQuOOg/0?wx_fmt=jpeg "Title"
+
+![](https://github.com/breezecloud/public/raw/master/2dimensional_bar_code.jpg)  
+
 
 
