@@ -1,7 +1,7 @@
 #树莓派操作系统彻底定制
 ##一、为什么要用树莓派  
-  文章名字由来于网上有人对LFS项目的翻译，虽然感觉没有体现LFS的含义，但如果取《在树莓派进行LFS》这样的类似名字，估计很多人都不明白什么意思。所以先来科普一下什么是LFS。Linux From Scratch项目简称LFS，它提供具体的步骤、特定的补丁、必须的脚本，从而提供一个简便的创建Linux发行版的途径。简单来说提供了一个自己从网上下载所有源代码编译一个linux完整系统的指南。  
-  为什么要在树莓派上编译？首先是学习，当然如果在pc机上LFS也一样可以通过LFS学习linux，但我没有在裸机上安装linux，如果运行虚拟机的话估计速读比树莓派也快不了多少。而且手头有树莓派啊，LFS需要长时间开机，树莓派可以安静的工作没有任何噪音困扰，你可以用你的pc做其它事情，这样多惬意。再有我在预装了树莓派的raspbian系统后感觉启动很慢，系统预装了很多我不需要的东西占用了大量的内存和TF卡空间，如果我想用树莓派做一个固定的用处，比如BT下载机，或者摄像机之类的，当然需要一个小巧，启动迅速的系统，所以需要定制。最后，我想我是喜欢树莓派吧。  
+  文章名字由来于网上有人对LFS项目的翻译，虽然感觉没有体现LFS的内涵，但如果叫《在树莓派进行LFS》这样的类似名字，估计很多人都不明白什么意思。先来科普一下什么是LFS。Linux From Scratch项目简称LFS，它提供具体的步骤、特定的补丁、必须的脚本，从而提供一个简便的创建Linux发行版的途径。简单来说提供了一个自己从网上下载所有源代码编译一个linux完整系统的指南，就好比自己去买电子零件安装一台收音机。  
+  为什么要在树莓派上编译？首先是学习，当然如果在pc机上LFS也一样可以通过LFS学习linux，但我不想在裸机上安装linux，如果运行虚拟机的话估计速度比树莓派也快不了多少。而且手头有树莓派啊。LFS需要长时间开机，树莓派可以安静的工作没有任何噪音困扰，你可以用你的pc做其它事情，这样多惬意。另外我在预装了树莓派的raspbian系统后感觉启动很慢，系统预装了很多我不需要的东西占用了大量的内存和TF卡空间，如果我想用树莓派做一个固定的用处，比如BT下载机，或者摄像机之类的，当然需要一个小巧，启动迅速的系统，所以需要定制。最后，我想我是喜欢树莓派吧。  
   在我刚开始想用树莓派进行LFS时，感觉是一项大工程，因为以前我用pc参照LFS手册进行LFS，感觉这是一项复杂和需要勇气的工作，而且对于是否可以在树莓派上进行LFS实在心里没底。直到我在网上找到了一个网站<http://www.intestinate.com/pilfs/>，知道国外有人已经进行了尝试并且编制了相关的脚本，沿着前人的步伐，我发现在树莓派上进行LFS不是一项困难的工作，甚至感觉so easy。我借用了pilfs网站的脚本，在此十分感谢pilfs网站的帮助。
 ##二、前提条件
   需要一个树莓派及电源、键盘、鼠标、TF卡（16G）、U盘等附件，大概这是废话了，另外根据我的经历，在pi1上做LFS那是一件极其痛苦的事情（第一阶段需要50小时左右），所以建议在pi3上完成LFS，pi2是否可以我没测试过。 
@@ -58,7 +58,7 @@
         mkswap /swapfile
         swapon -v /swapfile
 
-     将u盘插入树莓派，将sources到/lfs/
+     将u盘插入树莓派，将sources拷贝到/lfs/
 
         mount /dev/sda1 /mnt
         cp -R /mnt/sources/* /lfs/sources
@@ -83,7 +83,7 @@
         su - lfs 
         cd /lfs/sources
         ./ch5-build.sh
-      此过程大概有8个小时（树莓派1大概需要50小时，另外建议树莓派1在config.txt文件在加上gpu_mem=16，以最大化memory）。在结束之后，可以通过查看putty的截屏查看是否有错误。如果顺利通过，那么应该说已经成功了一大半了，后面的步骤应该不会遇到大的问题。编译完成的软件安装在/tools目录下，修改文件属性，以root用户执行：
+      此过程大概有8个小时（pi1大概需要50小时，另外建议树莓派1在config.txt文件在加上gpu_mem=16，以最大化memory）。在结束之后，可以通过查看putty的截屏查看是否有错误。如果顺利通过，那么应该说已经成功了一大半了，后面的步骤应该不会遇到大的问题。编译完成的软件安装在/tools目录下，修改文件属性，以root用户执行：
 
         exit
         chown -R root:root /lfs/tools
@@ -182,7 +182,7 @@ pilfs_tools_rpi1_20161220.tar.gz是编译的tools目录（基于rpi1），这样
 
 2016-05-10-raspbian-jessie.zip是raspbian树莓派操作系统
 
-sources目录  所以编译使用的源代码软件包
+sources目录，所有的源代码包
 
 2，关于自己的脚本及本手册
 本手册和脚本作为github的一个项目，放在github.com/breezecloud/myPiLFS,可以使用
@@ -193,6 +193,8 @@ git clone git://github.com/breezecloud/myPiLFS下载，也可以直接用浏览�
 邮箱：luping@shtel.com.cn或者luping@189.cn欢迎交流
 欢迎加入我的个人公众号，本人以后所有的原创文章均会发布在此公众号，公众号可以通过搜索electronic_computer加入，或者扫描二维码加入。
 
-[id]: https://mmbiz.qlogo.cn/mmbiz_jpg/HkMWDzhKWAhHfV6Jleicm9l8O8qTLrlG0ZT0pZkLkM8ZS72TxJAm4TN4ScbbSyQMTBI3IYicW9HicnBq2ACRQuOOg/0?wx_fmt=jpeg "Title"
+
+![](https://github.com/breezecloud/public/raw/master/2dimensional_bar_code.jpg)  
+
 
 
